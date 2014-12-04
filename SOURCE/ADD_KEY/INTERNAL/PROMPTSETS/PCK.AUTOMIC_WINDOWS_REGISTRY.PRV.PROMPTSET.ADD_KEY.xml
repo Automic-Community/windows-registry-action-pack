@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<uc-export clientvers="11.0.0-sprint.20141111.1610+build.2828">
+<PRPT name="PCK.AUTOMIC_WINDOWS_REGISTRY.PRV.PROMPTSET.ADD_KEY">
+<HEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<PROMPTDESIGNER state="1">
+<DESIGNER/>
+</PROMPTDESIGNER>
+<PROMPTSETXUI state="1">
+<XUIEDITOR><![CDATA[<dialog height="506" icon="PRPT" id="PRPTS" left="0" top="0" width="420"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Parameters"><properties><entry name="text">Parameters</entry><entry name="modifiable">0</entry></properties><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_REG_KEYs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Key Name" tooltip="FullKey - in the form of ROOTKEY\SubKey name ROOTKEY - [ HKLM | HKCU | HKCR | HKU | HKCC ] SubKey - The full name of a registry key under the selected ROOTKEY" upper="0" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Key Name</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_REG_KEYs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">0</entry>
+            <entry name="tooltip">FullKey - in the form of ROOTKEY\SubKey name
+ROOTKEY - [ HKLM | HKCU | HKCR | HKU | HKCC ]
+SubKey - The full name of a registry key under the selected ROOTKEY</entry>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">0</entry>
+            <entry name="initvalue"/>
+            <entry name="customfield"/>
+         <entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties>
+      </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_REG_OPTION_KEYVALUEs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Key Value" tooltip="The name, under the selected Key, to add" upper="0" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Key Value</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_REG_OPTION_KEYVALUEs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">0</entry>
+            <entry name="tooltip">The name, under the selected Key, to add</entry>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">0</entry>
+            <entry name="initvalue"/>
+            <entry name="customfield"/>
+         <entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties>
+      </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_REG_OPTION_DEFAULTs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Add default" tooltip="Add default value or empty value name &lt;no name&gt; to the selected key" upper="0" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Add default</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_REG_OPTION_DEFAULTs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">0</entry>
+            <entry name="tooltip">Add default value or empty value name &lt;no name&gt; to the selected key</entry>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">0</entry>
+            <entry name="initvalue"/>
+            <entry name="customfield"/>
+         <entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties>
+      </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_REG_OPTION_USE_SEPARATORs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Separator" tooltip="Specifies separator character in the data string for REG_MULTI_SZ. If omitted, &quot;\0&quot; will be used as the separator" upper="0" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Separator</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_REG_OPTION_USE_SEPARATORs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">0</entry>
+            <entry name="tooltip">Specifies separator character in the data string for REG_MULTI_SZ. If omitted, &quot;\0&quot; will be used as the separator</entry>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">0</entry>
+            <entry name="initvalue"/>
+            <entry name="customfield"/>
+         <entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties>
+      </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_REG_OPTION_SRCH_TYPEs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Data type" tooltip="RegKey data types [ REG_SZ | REG_MULTI_SZ | REG_EXPAND_SZ | REG_DWORD | REG_QWORD | REG_BINARY | REG_NONE ] If omitted, REG_SZ is assumed." upper="0" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Data type</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_REG_OPTION_SRCH_TYPEs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">0</entry>
+            <entry name="tooltip">RegKey data types
+[ REG_SZ | REG_MULTI_SZ | REG_EXPAND_SZ | REG_DWORD | REG_QWORD | REG_BINARY | REG_NONE ]
+If omitted, REG_SZ is assumed.</entry>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">0</entry>
+            <entry name="initvalue"/>
+            <entry name="customfield"/>
+         <entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties>
+      </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_REG_OPTION_ASSIGN_DATAs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Assign data" tooltip="The data to assign to the registry ValueName being added" upper="0" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Assign data</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_REG_OPTION_ASSIGN_DATAs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">0</entry>
+            <entry name="tooltip">The data to assign to the registry ValueName being added</entry>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">0</entry>
+            <entry name="initvalue"/>
+            <entry name="customfield"/>
+         <entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties>
+      </text></readpanel></dialog>]]></XUIEDITOR>
+</PROMPTSETXUI>
+<PROMPTSETDATA state="1">
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_REG_KEYs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_REG_KEY#" ReadFromTable="OPSE"></UC4RB_REG_KEYs.00><UC4RB_REG_OPTION_KEYVALUEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_REG_OPTION_KEYVALUE#" ReadFromTable="OPSE"></UC4RB_REG_OPTION_KEYVALUEs.00><UC4RB_REG_OPTION_DEFAULTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_REG_OPTION_DEFAULT#" ReadFromTable="OPSE"></UC4RB_REG_OPTION_DEFAULTs.00><UC4RB_REG_OPTION_USE_SEPARATORs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_REG_OPTION_USE_SEPARATOR#" ReadFromTable="OPSE"></UC4RB_REG_OPTION_USE_SEPARATORs.00><UC4RB_REG_OPTION_SRCH_TYPEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_REG_OPTION_SRCH_TYPE#" ReadFromTable="OPSE"></UC4RB_REG_OPTION_SRCH_TYPEs.00><UC4RB_REG_OPTION_ASSIGN_DATAs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_REG_OPTION_ASSIGN_DATA#" ReadFromTable="OPSE"></UC4RB_REG_OPTION_ASSIGN_DATAs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+</PROMPTSETDATA>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[Name: /registry/key
+Type: String
+Description:
+ Prompt set for registry key.
+Ex:
+HKLM\Software\UC4
+
+Name: /registry/optional/key_value
+Type: String
+Description:
+ Value name under the key to add. 
+
+Name: /registry/optional/default_key_value
+Type: Boolean
+Description:
+ Add empty value name (Default) under the key
+
+Name: /registry/optional/use_separator
+Type: String
+Description:
+ Specify one character that you use as the separator in your data
+ string for REG_MULTI_SZ. If omitted, use "\0" as the separator.
+
+
+
+ ]]></DOC>
+</DOCU_Docu>
+</PRPT>
+</uc-export>

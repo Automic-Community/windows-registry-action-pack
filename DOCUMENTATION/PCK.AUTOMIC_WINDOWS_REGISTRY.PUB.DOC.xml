@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<uc-export clientvers="11.0.0-sprint.20141111.1610+build.2828">
+<DOCU name="PCK.AUTOMIC_WINDOWS_REGISTRY.PUB.DOC">
+<HEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[The actions manipulate the Windows Registry of the target host.
+
+=Supported Platforms=
+
+* Microsoft Windows 2003
+* Microsoft Windows 2008
+
+=Setup=
+
+* No setup required. The actions are based on standard reg command and provides access to it's functionality.
+
+=Rollback=
+
+The Windows Registry manipulation actions do not support rollbacks yet.
+
+]]></DOC>
+</DOCU_Docu>
+</DOCU>
+</uc-export>
