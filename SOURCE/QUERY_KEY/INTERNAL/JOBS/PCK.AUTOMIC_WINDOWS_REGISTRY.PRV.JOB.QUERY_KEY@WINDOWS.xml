@@ -161,7 +161,7 @@ set returncode=%errorlevel%
 if %returncode% EQU 0 (
 echo Successfully queried key &UC4RB_REG_KEY#
 ) else (
-echo Error occurred whilst quering key &UC4RB_REG_KEY#.
+echo Error occurred whilst querying key &UC4RB_REG_KEY#.
 )
 exit /b %returncode%]]></MSCRI>
 </SCRIPT>
