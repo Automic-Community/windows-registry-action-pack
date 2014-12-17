@@ -146,9 +146,9 @@
 %SYSTEMROOT%\system32\reg.exe COMPARE "&UC4RB_REG_KEY#" "&UC4RB_REG_KEY_DST#" &KEYS#
 set returncode=%errorlevel%
 if %returncode% EQU 0 (
-echo Successfully copied key &UC4RB_REG_KEY# to &UC4RB_REG_KEY_DST#
+echo Successfully compared key &UC4RB_REG_KEY# with &UC4RB_REG_KEY_DST#
 ) else (
-echo Error occurred whilst copying key &UC4RB_REG_KEY# to &UC4RB_REG_KEY_DST#.
+echo Error occurred whilst comparing key &UC4RB_REG_KEY# with &UC4RB_REG_KEY_DST#.
 )
 exit /b %returncode%]]></MSCRI>
 </SCRIPT>
