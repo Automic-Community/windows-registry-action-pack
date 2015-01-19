@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <VARA OVD_VRName="FREI" data_type="STATIC" name="PCK.AUTOMIC_WINDOWS_REGISTRY.PUB.VAR.METADATA" replacementmode="2">
 <HEADER state="1">
 <Title/>
@@ -24,14 +24,15 @@
 </ATTR_VARA>
 <VARA state="1">
 <Variables>
-<row Name="Categories" Value="" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Categories" Value="OS, WIN" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Company" Value="Automic Software GmbH" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Dependencies" Value="PCK.ITPA_SHARED &gt;= 0.0.1" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Description" Value="" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Homepage" Value="" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Dependencies" Value="PCK.ITPA_SHARED &gt;= 1.0.0" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Description" Value="Manipulate the Windows Registry of the target host. (Microsoft Windows 2003, Microsoft Windows 2008)" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Homepage" Value="Automic Software GmbH" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="License" Value="" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Name" Value="PCK.AUTOMIC_WINDOWS_REGISTRY" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Title" Value="Windows Registry Operations" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Package Format Version" Value="0.1.0" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Title" Value="Automic Windows Registry" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Version" Value="1.0.0" Value1="" Value2="" Value3="" Value4=""/>
 </Variables>
 </VARA>
