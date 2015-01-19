@@ -7,22 +7,13 @@
 <OH_SubType/>
 </HEADER>
 <DOCU_Docu state="1" type="text">
-<DOC><![CDATA[The actions manipulate the Windows Registry of the target host.
+<DOC><![CDATA[Contains actions to manipulate the Windows Registry.
 
-=Supported Platforms=
+# Supported Platforms
 
-* Microsoft Windows 2003
-* Microsoft Windows 2008
-
-=Setup=
-
-* No setup required. The actions are based on standard reg command and provides access to it's functionality.
-
-=Rollback=
-
-The Windows Registry manipulation actions do not support rollbacks yet.
-
-]]></DOC>
+- Microsoft Windows 2003
+- Microsoft Windows 2008]]>
+</DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>
