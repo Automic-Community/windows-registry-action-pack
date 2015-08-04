@@ -1,0 +1,78 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Force Tags        add key    valid
+Test Template     Add Key Template
+Resource          ../../resources/keywords.txt
+
+*** Variables ***
+
+*** Test Cases ***    Key Name (KEY)                              Delete Value (OPTION_KEYVALUE)    Delete default (OPTION_DEFAULT)    Key Name (KEY)                              Key Value (OPTION_KEYVALUE)    Add default (OPTION_DEFAULT)    Separator (OPTION_USE_SEPARATOR)    Data type (OPTION_SRCH_TYPE)    Assign data (OPTION_ASSIGN_DATA)                          Return Code    Return Status
+Add New Key Valid To Remote Machine
+                      \\\\vvnsatfile01\\HKLM\\Software\\.1MyCo    \                                 \                                  \\\\vvnsatfile01\\HKLM\\Software\\.1MyCo    \                              \                               \                                   REG_SZ                          \                                                         0              ${ENDED_OK - ended normally}
+
+Add New Key Valid Without Value
+                      HKCR\\.1WinRegistryTest1                    Testing Registry 1                \                                  HKCR\\.1WinRegistryTest1                    Testing Registry 1             \                               \                                   REG_SZ                          \                                                         0              ${ENDED_OK - ended normally}
+
+Add New Key Valid With Value To HKCR
+                      HKCR\\.1WinRegistryTest                     Testing Windows Registry          \                                  HKCR\\.1WinRegistryTesting                  Testing Windows Registry       \                               \                                   REG_SZ                          999999                                                    0              ${ENDED_OK - ended normally}
+
+Add New Key Valid With Value To HKLM Root
+                      HKLM                                        Testing Windows Registry          \                                  HKLM                                        Testing Windows Registry       \                               \                                   REG_SZ                          999999                                                    0              ${ENDED_OK - ended normally}
+
+Add New Key Valid With Value To HKU Root
+                      HKU                                         Testing Windows Registry          \                                  HKU                                         Testing Windows Registry       \                               \                                   REG_SZ                          999999                                                    0              ${ENDED_OK - ended normally}
+
+Add New Key Valid With Value To HKCU
+                      HKCU\\.1WinRegistryTest                     Testing Windows Registry          \                                  HKCU\\.1WinRegistryTesting                  Testing Windows Registry       \                               \                                   REG_SZ                          999999                                                    0              ${ENDED_OK - ended normally}
+
+Add New Key Valid With Value to HKCC
+                      HKCC\\.1WinRegistryTest                     Testing Windows Registry          \                                  HKCC\\.1WinRegistryTesting                  Testing Windows Registry       \                               \                                   REG_SZ                          Saved Search                                              0              ${ENDED_OK - ended normally}
+
+Add New Key Valid REG_BINARY
+                      HKCR\\.1WinRegistryTest1                    Data                              \                                  HKCR\\.1WinRegistryTest1                    Data                           \                               \                                   REG_BINARY                      fe340ead                                                  0              ${ENDED_OK - ended normally}
+
+Add New Key Valid REG_EXPAND_SZ 1
+                      HKCR\\.1WinRegistryTest1                    FriendlyTypeName                  \                                  HKCR\\.1WinRegistryTest1                    FriendlyTypeName               \                               \                                   REG_EXPAND_SZ                   @%SystemRoot%\explorer.exe,-6010                          0              ${ENDED_OK - ended normally}
+
+Add New Key Valid REG_EXPAND_SZ 2
+                      HKLM\\Software\\1MyCo                       Path                              \                                  HKLM\\Software\\1MyCo                       Path                           \                               \                                   REG_EXPAND_SZ                   ^%systemroot^%                                            0              ${ENDED_OK - ended normally}
+
+Add New Key Valid REG_DWORD
+                      HKCR\\.1WinRegistryTest1                    FriendlyTypeName                  \                                  HKCR\\.1WinRegistryTest1                    FriendlyTypeName               \                               \                                   REG_EXPAND_SZ                   100000                                                    0              ${ENDED_OK - ended normally}
+
+Add New Key Valid Without Key Value
+                      HKCR\\.1WinRegistryTest1                    \                                 \                                  HKCR\\.1WinRegistryTest1                    \                              \                               \                                   REG_SZ                          System.Security.SuppressUnmanagedCodeSecurityAttribute    0              ${ENDED_OK - ended normally}
+
+Add New Key Valid REG_MULTI_SZ
+                      HKLM\\Software\\MyCo                        MRU                               \                                  HKLM\\Software\\MyCo                        MRU                            \                               \                                   REG_MULTI_SZ                    fax\0mail                                                 0              ${ENDED_OK - ended normally}
+
+*** Keywords ***
+Suite Setup
+    Init AE And Package
+    Init Registry Server
+
+Add Key Template
+    [Arguments]    ${keyName1}    ${keyValue1}    ${default1}    ${keyName2}    ${keyValue2}    ${default2}
+    ...    ${separator}    ${dataType}    ${assignData}    ${returnCode}    ${returnStatus}
+    Init Action    ${ACTION_DELETE_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName1}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue1}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default1}
+    Action Execute
+    Init Action    ${ACTION_ADD_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName2}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue2}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default2}
+    Action Set    ${PRT_REG_OPTION_USE_SEPARATOR}    ${separator}
+    Action Set    ${PRT_REG_OPTION_SRCH_TYPE}    ${dataType}
+    Action Set    ${PRT_REG_OPTION_ASSIGN_DATA}    ${assignData}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    ${returnCode}
+    Action Return Status Should Be    ${returnStatus}
+    Action Report Should Contain    ${SuccessfullyAddedKey}
+    Action Report Should Contain    START AT
+    #Action Report Should Contain    PARAMETER VALIDATION START
+    #Action Report Should Contain    EXECUTION START
+    #Action Report Should Contain    ABEND AT
+    #Action Report Should Contain    RET-CODE

@@ -1,0 +1,77 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Force Tags        compare key    valid
+Test Template     Compare Keys Template
+Resource          ../../resources/keywords.txt
+
+*** Variables ***
+
+*** Test Cases ***    Key Name (KEY)              Delete Value (OPTION_KEYVALUE)    Delete default (OPTION_DEFAULT)    Key Name (KEY)              Delete Value (OPTION_KEYVALUE)    Delete default (OPTION_DEFAULT)    Key Name (KEY)              Key Value (OPTION_KEYVALUE)    Add default (OPTION_DEFAULT)    Separator (OPTION_USE_SEPARATOR)    Data type (OPTION_SRCH_TYPE)    Assign data (OPTION_ASSIGN_DATA)    Key Name (KEY)              Key Value (OPTION_KEYVALUE)    Add default (OPTION_DEFAULT)    Separator (OPTION_USE_SEPARATOR)    Data type (OPTION_SRCH_TYPE)    Assign data (OPTION_ASSIGN_DATA)    Key Name (KEY)              Destination Key (KEY_DST)    Compare all subkeys (OPTION_ALL_SUBKEYS)    Output all    Output differences    Output matches    No output    Compare value    Compare default    Return Code    Return Status                Message
+Compare Key Invalid Different
+                      HKCR\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCR\\.1WinRegistryTest2    Testing Registry 2                \                                  HKCR\\.1WinRegistryTest1    Testing Registry 1             \                               \                                   REG_SZ                          111                                 HKCR\\.1WinRegistryTest2    Testing Registry 2             \                               \                                   REG_SZ                          222                                 HKCR\\.1WinRegistryTest1    HKCR\\.1WinRegistryTest2     \                                           \             \                     \                 \            \                \                  2              ${ENDED_NOT_OK - aborted}    ${ResultComparedDifferent}
+
+Compare Key Invalid Different Key Values
+                      HKCR\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCR\\.1WinRegistryTest2    Testing Registry 2                \                                  HKCR\\.1WinRegistryTest1    Testing Registry 1             \                               \                                   REG_SZ                          222                                 HKCR\\.1WinRegistryTest2    Testing Registry 2             \                               \                                   REG_SZ                          222                                 HKCR\\.1WinRegistryTest1    HKCR\\.1WinRegistryTest2     \                                           \             \                     \                 \            \                \                  2              ${ENDED_NOT_OK - aborted}    ${ResultComparedDifferent}
+
+Compare Key Invalid Different Key Root
+                      HKCC\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCR\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCC\\.1WinRegistryTest1    Testing Registry 1             \                               \                                   REG_SZ                          222                                 HKCC\\.1WinRegistryTest1    Testing Registry 1             \                               \                                   REG_SZ                          222                                 HKCC\\.1WinRegistryTest1    HKCR\\.1WinRegistryTest1     \                                           \             \                     \                 \            \                \                  2              ${ENDED_NOT_OK - aborted}    ${ResultComparedDifferent}
+
+Compare Key Invalid Itself
+                      HKCC\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCC\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCC\\.1WinRegistryTest1    Testing Registry 1             \                               \                                   REG_SZ                          222                                 HKCC\\.1WinRegistryTest1    Testing Registry 1             \                               \                                   REG_SZ                          222                                 HKCC\\.1WinRegistryTest1    HKCC\\.1WinRegistryTest1     \                                           \             \                     \                 \            \                \                  1              ${ENDED_NOT_OK - aborted}    ${ErrorComparedWithItself}
+
+*** Keywords ***
+Suite Setup
+    Init AE And Package
+    Init Registry Server
+
+Compare Keys Template
+    [Arguments]    ${keyName1}    ${keyValue1}    ${default1}    ${keyName2}    ${keyValue2}    ${default2}
+    ...    ${keyName3}    ${keyValue3}    ${default3}    ${separator3}    ${dataType3}    ${assignData3}
+    ...    ${keyName4}    ${keyValue4}    ${default4}    ${separator4}    ${dataType4}    ${assignData4}
+    ...    ${keyName5}    ${keyDST}    ${allSubkeys}    ${outputAll}    ${outputDiffs}    ${outputMtch}
+    ...    ${noOutput}    ${keyValue5}    ${default5}    ${returnCode}    ${returnStatus}    ${message}
+    Init Action    ${ACTION_DELETE_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName1}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue1}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default1}
+    Init Action    ${ACTION_DELETE_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName2}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue2}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default2}
+    Action Execute
+    Init Action    ${ACTION_ADD_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName3}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue3}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default3}
+    Action Set    ${PRT_REG_OPTION_USE_SEPARATOR}    ${separator3}
+    Action Set    ${PRT_REG_OPTION_SRCH_TYPE}    ${dataType3}
+    Action Set    ${PRT_REG_OPTION_ASSIGN_DATA}    ${assignData3}
+    Action Execute
+    Init Action    ${ACTION_ADD_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName4}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue4}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default4}
+    Action Set    ${PRT_REG_OPTION_USE_SEPARATOR}    ${separator4}
+    Action Set    ${PRT_REG_OPTION_SRCH_TYPE}    ${dataType4}
+    Action Set    ${PRT_REG_OPTION_ASSIGN_DATA}    ${assignData4}
+    Action Execute
+    Init Action    ${ACTION_COMPARE_KEYS}
+    Action Set    ${PRT_REG_KEY}    ${keyName5}
+    Action Set    ${PRT_REG_KEY_DST}    ${keyDST}
+    Action Set    ${PRT_REG_OPTION_ALL_SUBKEYS}    ${allSubkeys}
+    Action Set    ${PRT_REG_OPTION_OUTPUT_ALL}    ${outputAll}
+    Action Set    ${PRT_REG_OPTION_OUTPUT_DIFFS}    ${outputDiffs}
+    Action Set    ${PRT_REG_OPTION_OUTPUT_MTCH}    ${outputMtch}
+    Action Set    ${PRT_REG_OPTION_NO_OUTPUT}    ${noOutput}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue5}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default5}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    ${returnCode}
+    Action Return Status Should Be    ${returnStatus}
+    Action Report Should Contain    ${message}
+    Action Report Should Contain    START AT
+    #Action Report Should Contain    PARAMETER VALIDATION START
+    #Action Report Should Contain    EXECUTION START
+    #Action Report Should Contain    ABEND AT
+    #Action Report Should Contain    RET-CODE

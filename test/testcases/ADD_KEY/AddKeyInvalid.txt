@@ -1,0 +1,51 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Force Tags        add key    invalid
+Test Template     Add Key Template
+Resource          ../../resources/keywords.txt
+
+*** Variables ***
+
+*** Test Cases ***    Key Name (KEY)             Delete Value (OPTION_KEYVALUE)    Delete default (OPTION_DEFAULT)    Key Name (KEY)                Key Value (OPTION_KEYVALUE)    Add default (OPTION_DEFAULT)    Separator (OPTION_USE_SEPARATOR)    Data type (OPTION_SRCH_TYPE)    Assign data (OPTION_ASSIGN_DATA)
+Add Key Invalid Wrong Root Key Name
+                      HKCR1                      Testing Registry1                 \                                  HKCR1                         Testing Registry1              \                               \                                   REG_SZ                          999999
+
+Add Key Invalid Wrong Type
+                      HKCR                       Testing Registry1                 \                                  HKCR                          Testing Registry1              \                               \                                   REG_SZ1                         999999
+
+Add Sub Key Invalid With Value To HKLM
+                      HKLM\\.1WinRegistryTest    Testing Windows Registry          \                                  HKLM\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          999999
+
+Add Sub Key Inalid With Value to HKU
+                      HKU\\.1WinRegistryTest     Testing Windows Registry          \                                  HKU\\.1WinRegistryTesting     Testing Windows Registry       \                               \                                   REG_SZ                          999999
+
+*** Keywords ***
+Suite Setup
+    Init AE And Package
+    Init Registry Server
+
+Add Key Template
+    [Arguments]    ${keyName1}    ${keyValue1}    ${default1}    ${keyName2}    ${keyValue2}    ${default2}
+    ...    ${separator}    ${dataType}    ${assignData}
+    Init Action    ${ACTION_DELETE_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName1}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue1}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default1}
+    Action Execute
+    Init Action    ${ACTION_ADD_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName2}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue2}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default2}
+    Action Set    ${PRT_REG_OPTION_USE_SEPARATOR}    ${separator}
+    Action Set    ${PRT_REG_OPTION_SRCH_TYPE}    ${dataType}
+    Action Set    ${PRT_REG_OPTION_ASSIGN_DATA}    ${assignData}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    1
+    Action Return Status Should Be    ${ENDED_NOT_OK - aborted}
+    Action Report Should Contain    ${ErrorAddingKey}
+    Action Report Should Contain    START AT
+    #Action Report Should Contain    PARAMETER VALIDATION START
+    #Action Report Should Contain    EXECUTION START
+    #Action Report Should Contain    ABEND AT
+    #Action Report Should Contain    RET-CODE

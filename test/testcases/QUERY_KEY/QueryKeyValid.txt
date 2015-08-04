@@ -1,0 +1,43 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Force Tags        query key    valid
+Test Template     Query Key Template
+Resource          ../../resources/keywords.txt
+
+*** Variables ***
+
+*** Test Cases ***    Key Name          Query default    Separator    Key Value    Verbose    Search type    Key only    Exact match    Data only    Case sensitive    Data search    Query Subkeys    Return Code    Return Status
+Query Key Valid       HKLM\\SOFTWARE    \                \            \            \          \              \           \              \            \                 \              \                0              ${ENDED_OK - ended normally}
+
+*** Keywords ***
+Suite Setup
+    Init AE And Package
+    Init Registry Server
+
+Query Key Template
+    [Arguments]    ${keyName}    ${default}    ${separator}    ${keyValue}    ${verbose}    ${type}
+    ...    ${keyOnly}    ${exactMatch}    ${dataOnly}    ${caseSensitive}    ${dataSearch}    ${querySubkeys}
+    ...    ${returnCode}    ${returnStatus}
+    Init Action    ${ACTION_QUERY_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default}
+    Action Set    ${PRT_REG_OPTION_USE_SEPARATOR}    ${separator}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue}
+    Action Set    ${PRT_REG_OPTION_VERBOSE}    ${verbose}
+    Action Set    ${PRT_REG_OPTION_SRCH_TYPE}    ${type}
+    Action Set    ${PRT_REG_OPTION_SRCH_KEYONLY}    ${keyOnly}
+    Action Set    ${PRT_REG_OPTION_SRCH_EX_MATC}    ${exactMatch}
+    Action Set    ${PRT_REG_OPTION_SRCH_DATAONL}    ${dataOnly}
+    Action Set    ${PRT_REG_OPTION_SRCH_CASESEN}    ${caseSensitive}
+    Action Set    ${PRT_REG_OPTION_DATA_SEARCH}    ${dataSearch}
+    Action Set    ${PRT_REG_OPTION_ALL_SUBKEYS}    ${querySubkeys}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    ${returnCode}
+    Action Return Status Should Be    ${returnStatus}
+    Action Report Should Contain    ${SuccessfullyQueriedKey}
+    Action Report Should Contain    START AT
+    #Action Report Should Contain    PARAMETER VALIDATION START
+    #Action Report Should Contain    EXECUTION START
+    #Action Report Should Contain    ABEND AT
+    #Action Report Should Contain    RET-CODE

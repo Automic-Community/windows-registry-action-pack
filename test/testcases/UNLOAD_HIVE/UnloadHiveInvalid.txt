@@ -1,0 +1,34 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Force Tags        unload hive    invalid
+Test Template     Unload Hive Template
+Resource          ../../resources/keywords.txt
+
+*** Variables ***
+
+*** Test Cases ***    Key Name
+Unload Hive Invalid Key Name From HKLM
+                      HKLM\\COMPONENTS1
+
+Unload Hive Invalid Key Name From HKU
+                      HKU\\COMPONENTS1
+
+*** Keywords ***
+Suite Setup
+    Init AE And Package
+    Init Registry Server
+
+Unload Hive Template
+    [Arguments]    ${keyName}
+    Init Action    ${ACTION_UNLOAD_HIVE}
+    Action Set    ${PRT_REG_KEY}    ${keyName}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    1
+    Action Return Status Should Be    ${ENDED_NOT_OK - aborted}
+    Action Report Should Contain    ${ErrorUnloadingHive}
+    Action Report Should Contain    START AT
+    #Action Report Should Contain    PARAMETER VALIDATION START
+    #Action Report Should Contain    EXECUTION START
+    #Action Report Should Contain    ABEND AT
+    #Action Report Should Contain    RET-CODE

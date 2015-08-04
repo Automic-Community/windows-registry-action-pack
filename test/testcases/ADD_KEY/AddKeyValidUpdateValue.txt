@@ -1,0 +1,69 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Force Tags        add key    valid
+Test Template     Add Key Template
+Resource          ../../resources/keywords.txt
+
+*** Variables ***
+
+*** Test Cases ***    Key Name (KEY)              Delete Value (OPTION_KEYVALUE)    Delete default (OPTION_DEFAULT)    Key Name (KEY)                Key Value (OPTION_KEYVALUE)    Add default (OPTION_DEFAULT)    Separator (OPTION_USE_SEPARATOR)    Data type (OPTION_SRCH_TYPE)    Assign data (OPTION_ASSIGN_DATA)    Key Name (KEY)                Key Value (OPTION_KEYVALUE)    Add default (OPTION_DEFAULT)    Separator (OPTION_USE_SEPARATOR)    Data type (OPTION_SRCH_TYPE)    Assign data (OPTION_ASSIGN_DATA)    Return Code    Return Status
+Add Key Valid Update No Value To Value
+                      HKCR\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCR\\.1WinRegistryTest1      Testing Registry 1             \                               \                                   REG_SZ                          \                                   HKCR\\.1WinRegistryTest1      Testing Registry 1             \                               \                                   REG_SZ                          9999                                0              ${ENDED_OK - ended normally}
+
+Add Key Valid Update Value To No Value
+                      HKCR\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCR\\.1WinRegistryTest1      Testing Registry 1             \                               \                                   REG_SZ                          999                                 HKCR\\.1WinRegistryTest1      Testing Registry 1             \                               \                                   REG_SZ                          \                                   0              ${ENDED_OK - ended normally}
+
+Add Key Valid Update With Value To HKCR
+                      HKCR\\.1WinRegistryTest     Testing Windows Registry          \                                  HKCR\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          999999                              HKCR\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          1                                   0              ${ENDED_OK - ended normally}
+
+Add Key Valid Update With Value To HKLM Root
+                      HKLM                        Testing Windows Registry          \                                  HKLM                          Testing Windows Registry       \                               \                                   REG_SZ                          999999                              HKLM                          Testing Windows Registry       \                               \                                   REG_SZ                          1                                   0              ${ENDED_OK - ended normally}
+
+Add Key Valid Update With Value To HKU Root
+                      HKU                         Testing Windows Registry          \                                  HKU                           Testing Windows Registry       \                               \                                   REG_SZ                          999999                              HKU                           Testing Windows Registry       \                               \                                   REG_SZ                          1                                   0              ${ENDED_OK - ended normally}
+
+Add Key Valid Update With Value To HKCU
+                      HKCU\\.1WinRegistryTest     Testing Windows Registry          \                                  HKCU\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          999999                              HKCU\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          1                                   0              ${ENDED_OK - ended normally}
+
+Add Key Valid Update With Value to HKCC
+                      HKCC\\.1WinRegistryTest     Testing Windows Registry          \                                  HKCC\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          999999                              HKCC\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          1                                   0              ${ENDED_OK - ended normally}
+
+*** Keywords ***
+Suite Setup
+    Init AE And Package
+    Init Registry Server
+
+Add Key Template
+    [Arguments]    ${keyName1}    ${keyValue1}    ${default1}    ${keyName2}    ${keyValue2}    ${default2}
+    ...    ${separator2}    ${dataType2}    ${assignData2}    ${keyName3}    ${keyValue3}    ${default3}
+    ...    ${separator3}    ${dataType3}    ${assignData3}    ${returnCode}    ${returnStatus}
+    Init Action    ${ACTION_DELETE_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName1}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue1}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default1}
+    Action Execute
+    Init Action    ${ACTION_ADD_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName2}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue2}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default2}
+    Action Set    ${PRT_REG_OPTION_USE_SEPARATOR}    ${separator2}
+    Action Set    ${PRT_REG_OPTION_SRCH_TYPE}    ${dataType2}
+    Action Set    ${PRT_REG_OPTION_ASSIGN_DATA}    ${assignData2}
+    Action Execute
+    Init Action    ${ACTION_ADD_KEY}
+    Action Set    ${PRT_REG_KEY}    ${keyName3}
+    Action Set    ${PRT_REG_OPTION_KEYVALUE}    ${keyValue3}
+    Action Set    ${PRT_REG_OPTION_DEFAULT}    ${default3}
+    Action Set    ${PRT_REG_OPTION_USE_SEPARATOR}    ${separator3}
+    Action Set    ${PRT_REG_OPTION_SRCH_TYPE}    ${dataType3}
+    Action Set    ${PRT_REG_OPTION_ASSIGN_DATA}    ${assignData3}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    ${returnCode}
+    Action Return Status Should Be    ${returnStatus}
+    Action Report Should Contain    ${SuccessfullyAddedKey}
+    Action Report Should Contain    START AT
+    #Action Report Should Contain    PARAMETER VALIDATION START
+    #Action Report Should Contain    EXECUTION START
+    #Action Report Should Contain    ABEND AT
+    #Action Report Should Contain    RET-CODE

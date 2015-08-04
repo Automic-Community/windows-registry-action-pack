@@ -1,0 +1,35 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Force Tags        restore hive    invalid
+Test Template     Restore Hive Template
+Resource          ../../resources/keywords.txt
+
+*** Variables ***
+
+*** Test Cases ***    Key Name (KEY)     File Name
+Restore Hive Invalid With Wrong Key Name
+                      HKLM\\SOFTWARE1    ${_WORKING_DIR}\\hive\\restore\\SOFTWARE_INVALID\\SOFTWARE
+
+Restore Hive Invalid With Wrong File Name
+                      HKLM\\SOFTWARE     ${_WORKING_DIR}\\hive\\COMPONENTS_INVALID
+
+*** Keywords ***
+Suite Setup
+    Init AE And Package
+    Init Registry Server
+
+Restore Hive Template
+    [Arguments]    ${keyName}    ${file}
+    Init Action    ${ACTION_RESTORE_HIVE}
+    Action Set    ${PRT_REG_KEY}    ${keyName}
+    Action Set    ${PRT_REG_FILE}    ${file}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    1
+    Action Return Status Should Be    ${ENDED_NOT_OK - aborted}
+    Action Report Should Contain    ${ErrorRestoringHive}
+    Action Report Should Contain    START AT
+    #Action Report Should Contain    PARAMETER VALIDATION START
+    #Action Report Should Contain    EXECUTION START
+    #Action Report Should Contain    ABEND AT
+    #Action Report Should Contain    RET-CODE
