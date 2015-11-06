@@ -20,7 +20,7 @@
 <HostDst>|&lt;WIN&gt;|HOST</HostDst>
 <HostATTR_Type>WINDOWS</HostATTR_Type>
 <CodeName/>
-<Login>UC4_RL.LOGIN.ALL</Login>
+<Login/>
 <IntAccount/>
 <ExtRepDef>1</ExtRepDef>
 <ExtRepAll>0</ExtRepAll>
@@ -112,7 +112,7 @@
 <FInclSubDirs>0</FInclSubDirs>
 </ROLLBACK>
 <PRE_SCRIPT mode="1" replacementmode="1" state="1">
-<PSCRI/>
+<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
 <MSCRI><![CDATA[!Create a folder to store snapshot
