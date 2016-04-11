@@ -1,2 +1,3 @@
 *** Settings ***
-Force Tags        win    pck.automic_windows_registry
+Suite Setup       Create data test
+Resource          ../resources/keywords.txt
