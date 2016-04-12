@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        add key    invalid
+Force Tags        add key    invalid    win
 Test Template     Add Key Template
 Resource          ../../resources/keywords.txt
 

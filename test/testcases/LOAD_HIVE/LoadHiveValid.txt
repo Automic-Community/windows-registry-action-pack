@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        load hive    valid
+Force Tags        load hive    valid    win
 Test Template     Load Hive Template
 Resource          ../../resources/keywords.txt
 

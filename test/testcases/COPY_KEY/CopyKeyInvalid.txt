@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        copy key    valid
+Force Tags        copy key    valid    win
 Test Template     Copy Key Template
 Resource          ../../resources/keywords.txt
 

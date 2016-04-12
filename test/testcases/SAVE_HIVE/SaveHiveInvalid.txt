@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        save hive    invalid
+Force Tags        save hive    invalid    win
 Test Template     Save Hive Template
 Resource          ../../resources/keywords.txt
 

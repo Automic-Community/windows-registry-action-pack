@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        compare key    valid
+Force Tags        compare key    valid    win
 Test Template     Compare Keys Template
 Resource          ../../resources/keywords.txt
 

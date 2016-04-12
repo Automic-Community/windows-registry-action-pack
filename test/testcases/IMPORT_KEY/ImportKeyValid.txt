@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        import key    valid
+Force Tags        import key    valid    win
 Test Template     Import Key Template
 Resource          ../../resources/keywords.txt
 

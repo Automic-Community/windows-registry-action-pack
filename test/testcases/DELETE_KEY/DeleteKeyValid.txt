@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        delete key    valid
+Force Tags        delete key    valid    win
 Test Template     Add Key Template
 Resource          ../../resources/keywords.txt
 

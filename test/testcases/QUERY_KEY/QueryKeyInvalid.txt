@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        query key    invalid
+Force Tags        query key    invalid    win
 Test Template     Query Key Template
 Resource          ../../resources/keywords.txt
 

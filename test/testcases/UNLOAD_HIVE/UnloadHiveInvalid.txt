@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Suite Setup
-Force Tags        unload hive    invalid
+Force Tags        unload hive    invalid    win
 Test Template     Unload Hive Template
 Resource          ../../resources/keywords.txt
 
