@@ -125,7 +125,6 @@ $guid="&UC4RB_OUT_TARGET_GUID#"
 
 $currentDateTime=get-date -format "d/MM/%y HH:%m:%s"
 
-
 $xmlDoc='<?xml version="1.0" encoding="UTF-8"?>
 <registrySnapshot date="' + $currentDateTime + '" guid="'+$guid+'" regPath="'+$path+'" type="reg" status="notfound">'
 

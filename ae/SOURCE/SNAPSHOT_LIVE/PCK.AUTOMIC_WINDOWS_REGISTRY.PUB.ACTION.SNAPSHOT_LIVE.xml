@@ -614,8 +614,6 @@
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[Takes a snapshot of a location in Windows registry and registers the snapshot in the Deployment Manager.
 
-
- 
 ]]></DOC>
 </DOCU_Docu>
 </JOBP>

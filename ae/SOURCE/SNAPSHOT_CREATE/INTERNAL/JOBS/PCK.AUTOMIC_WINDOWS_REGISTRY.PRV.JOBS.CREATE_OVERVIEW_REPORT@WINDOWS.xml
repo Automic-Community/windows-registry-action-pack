@@ -125,7 +125,6 @@ $guid="&UC4RB_OUT_TARGET_GUID#"
 
 $currentDateTime=get-date -format "d/MM/%y HH:%m:%s"
 
-
 set-location registry::$path
 
 $dirs=,$path + (get-childitem . -rec|select-object -expand name)

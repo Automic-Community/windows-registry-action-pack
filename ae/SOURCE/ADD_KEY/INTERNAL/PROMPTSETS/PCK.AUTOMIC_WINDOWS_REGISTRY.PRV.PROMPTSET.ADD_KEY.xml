@@ -175,8 +175,6 @@ Description:
  Specify one character that you use as the separator in your data
  string for REG_MULTI_SZ. If omitted, use "\0" as the separator.
 
-
-
  ]]></DOC>
 </DOCU_Docu>
 </PRPT>
