@@ -7,7 +7,8 @@ Resource          ../../resources/keywords.txt
 *** Variables ***
 
 *** Test Cases ***    Key Name          File Name                                       File Name
-Save Hive Valid       HKLM\\SOFTWARE    ${_WORKING_DIR}\\hive\\save\\valid\\SOFTWARE    HKLM\\TEST    ${_WORKING_DIR}\\hive\\save\\valid\\TEMP
+Save Hive Valid       [Tags]            SMOKE_TEST
+                      HKLM\\SOFTWARE    ${_WORKING_DIR}\\hive\\save\\valid\\SOFTWARE    HKLM\\TEST    ${_WORKING_DIR}\\hive\\save\\valid\\TEMP
 
 *** Keywords ***
 Suite Setup

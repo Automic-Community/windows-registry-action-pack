@@ -11,6 +11,7 @@ Delete Key Valid Without Value
                       HKCR\\.1WinRegistryTest1    Testing Registry 1                \                                  HKCR\\.1WinRegistryTest1      Testing Registry 1             \                               \                                   REG_SZ                          \                                   HKCR\\.1WinRegistryTest1    Testing Registry 1                \                                  0              ${ENDED_OK - ended normally}
 
 Delete New Key Valid With Value
+                      [Tags]                      SMOKE_TEST
                       HKCR\\.1WinRegistryTest     Testing Windows Registry          \                                  HKCR\\.1WinRegistryTesting    Testing Windows Registry       \                               \                                   REG_SZ                          999999                              HKCR\\.1WinRegistryTest     Testing Windows Registry          \                                  0              ${ENDED_OK - ended normally}
 
 *** Keywords ***
